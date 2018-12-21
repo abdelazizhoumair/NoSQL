@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" lang="fr">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<!-- ******************** -->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
+	<!-- **************** -->
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="script.js" ></script>
+	<title></title>
+</head>
+<body style="background-image: linear-gradient(, ); ">
+	<nav class="navbar navbar-light bg-light">
+	  <a class="navbar-brand" href="#">
+	    <img src="football.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+	    TSE foot
+	  </a>
+		<form class="form-inline my-2 my-lg-0" method="post" action="search_players.php">
+			<select class="custom-select form-control mr-sm-1 " name="poste">
+			  	<option selected>post</option>
+				<option value="milieu">milieu</option>
+				<option value="défence">défence</option>
+				<option value="attaque">attaque</option>
+			</select>
+			<input class="form-control mr-sm-1" type="text" placeholder="age max" name="age" required>
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</nav>
+
+	<br><br>
+	<div class="container">
+		<!-- ======================== partie joueurs ================= -->
+		<form class="" id="form_add_player">
+			<h3 class="text-center font-italic">Ajouter Joueur</h3>
+		  <div class="row">
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="last name" name="nom">
+		    </div>
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="first name" name="prenom">
+		    </div>
+		    <div class="col">
+		      <input type="date" class="form-control form-control-sm" placeholder="birth day" name="aniv">
+		    </div>
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="taille" name="taille">
+		    </div>
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="poids" name="poids">
+		    </div>
+		    <div class="col">
+		      	<select class="custom-select custom-select-sm" name="poste">
+				  	<option selected>post</option>
+					<option value="milieu">milieu</option>
+					<option value="défence">défence</option>
+					<option value="attaque">attaque</option>
+				</select>
+		    </div>
+		  </div><br>
+		  <div class="col row">
+		  <button id="add_player" class="col-sm-1 btn btn-primary">submit</button>
+		 <div class="col-sm-10" ><span id="res_add_player"> résultat d'ajout ici </span></div>
+		 </div>
+		</form><br>
+		<hr size="30">
+		<!-- ======================== partie équipe ================= -->
+		
+		<h3 class="text-center font-italic">Ajouter Equipe</h3>
+		<div class="row">
+		<form id="form_add_team" class="col">
+		  <div class="row">
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="team name" name="nom">
+		    </div>
+		    <div class="col">
+		      <input type="text" class="form-control form-control-sm" placeholder="stade name" name="stade">
+		    </div>
+		    <div class="col">
+		    	<div class="input-group form-control">
+					<!-- <div class="input-group-prepend">
+				    	<span class="input-group-text" id="">colors</span>
+				  	</div> -->
+				  	<input type="color" class="form-control form-control-sm" name="color1">
+				  	<input type="color" class="form-control form-control-sm" name="color2">
+				  	<input type="color" class="form-control form-control-sm" name="color3">
+				  	<input type="color" class="form-control form-control-sm" name="color4">
+				</div>
+		    </div>
+		  </div><br>
+		  <button class="btn btn-primary" id="add_team">submit</button>
+		</form>
+		<p> <span id="res_add_team"> </span></p>
+		</div><br>
+		<hr>
+<!-- *********************** -->
+		<h3 class="text-center font-italic">Ajouter Equipe-Joueurs</h3>
+		<div class="row">
+		<form id="form_add_player_team" class="col">
+		  <div class="row">
+		    <div class="col">
+		      <input id="1" type="text" class="form-control form-control-sm auto" placeholder="team name" name="team">
+		    </div>
+		    <div class="col">
+		      <input id="2" type="text" class="form-control form-control-sm autoj" placeholder="player name" name="player">
+		    </div>
+		    
+		  </div><br>
+		  <button class="btn btn-primary" id="add_player_team">submit</button>
+		</form>
+		<p> <span id="res_add_player_team"></span></p>
+		</div><br>
+		<!-- ******************************* -->
+		<hr>
+		<div class="">
+			<h3 class="text-center font-italic">Ajouter Compétition</h3>
+		<form id="form_add_compet" ><br>
+			<div class="col row">
+			      <input type="text" class="col form-control form-control-sm" placeholder="compet name" name="name_compet">
+			      <input type="date" class="col form-control form-control-sm " name="date_compet">
+			</div>
+			<br>
+			<div class="row">
+		  	<div id="x1" class="col">
+			    <div class="">
+			      <input type="text" class="form-control form-control-sm auto" placeholder="team domicile" name="team_1">
+			    </div>
+			    <div class="">
+			      <input type="text" class="form-control form-control-sm" placeholder="score" name="score_1">
+			    </div>
+			    <div id="notes_1" class="col row">
+			      <input type="text" class="col form-control form-control-sm autoj" placeholder="player" name="player_1[]">
+			      <input type="text" class="col form-control form-control-sm" placeholder="note" name="note_1[]">
+			    </div>
+		  	</div>
+		  	<div id="x2" class="col">
+			    <div class="">
+			      <input type="text" class="form-control form-control-sm auto" placeholder="team guest" name="team_2">
+			    </div>
+			    <div class="">
+			      <input type="text" class="form-control form-control-sm" placeholder="score" name="score_2">
+			    </div>
+			    <div id="notes_2" class="col row">
+			      <input id="1" type="text" class="col form-control form-control-sm autoj" placeholder="player" name="player_2[]">
+			      <input type="text" class="col form-control form-control-sm " placeholder="note" name="note_2[]">
+			    </div>
+		  	</div>
+		  	<!-- //*** -->	
+		  	</div>
+		  	<br>
+
+		</form>
+		<div class="row">
+		<div class="col">
+		<button id="input_note_1" class="btn btn-success float-right" ><i class="fas fa-plus"></i></button>
+		</div>
+		<div class="col">
+		<button id="input_note_2" class="btn btn-success float-right" ><i class="fas fa-plus"></i></button>
+		</div>
+		</div>
+		<button class="btn btn-primary" id="add_compet">submit</button>
+		</div><br>
+		<p> <span id="res_add_compet"> résultat d'ajout ici </span></p>
+
+	</div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>    
+<script type="text/javascript">
+$(function() {   
+    //autocomplete
+    $(".auto").autocomplete({
+        source: "search_team_autocomplete.php",
+        minLength: 1
+    });
+    $(".autoj").autocomplete({
+        source: "search_player_autocomplete.php",
+        minLength: 1
+    });    
+});
+
+
+</script>
+
+<!-- ************************** -->
+<!-- Footer -->
+<footer class="footer bg-light">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://fr.linkedin.com/in/yassine-birouk-299567139"> <i class="fab fa-linkedin" aria-hidden="true"></i></a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</body>
+</html>
